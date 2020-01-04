@@ -8,7 +8,6 @@ setup(
     author='dsin',
     author_email='dsin@skyvariety.com',
     install_requires=[
-      'urllib',
     ],
     license='unlicense',
     packages=['skyvarietyutils'],
