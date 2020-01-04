@@ -1,6 +1,6 @@
 def hello():
     print('It works!')
 
-from .skyvarietyutils import (
+from . import (
   http,
 )
