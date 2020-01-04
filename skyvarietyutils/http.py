@@ -1,4 +1,5 @@
-import urllib
+import urllib.parse
+import urllib.request
 
 # url : 'http://localhost:8080/'
 # query_args : { 'q':'query string', 'foo':'bar' }
