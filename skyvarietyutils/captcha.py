@@ -1,6 +1,6 @@
 # from http://daily.profeth.de/2008/04/using-recaptcha-with-google-app-engine.html
 # download from : http://dev.feth.com/Python/Google%20App%20Engine/recaptcha/captcha.source
-from skyvarietyutils import http
+import skyvarietyutils
 import json
 
 """
@@ -53,7 +53,7 @@ def submit(recaptcha_challenge_field,
 
     if not (recaptcha_response_field  and # recaptcha_challenge_field
             len (recaptcha_response_field)): # and len (recaptcha_challenge_field)
-        return RecaptchaResponse (is_valid = False, error_code = 'incorrect-captcha-sol')
+        return RecaptchaResponse(is_valid=False, error_code='incorrect-captcha-sol')
 
     headers = {
                'Content-type':  'application/x-www-form-urlencoded',
@@ -79,7 +79,7 @@ def submit(recaptcha_challenge_field,
     #               headers  = headers
     #                )
 
-    httpresp = http.post('https://%s/recaptcha/api/siteverify' % VERIFY_SERVER, params, headers)
+    httpresp = skyvarietyutils.http.post('https://%s/recaptcha/api/siteverify' % VERIFY_SERVER, params, headers)
 
     if httpresp.getcode() == 200:
         # response was fine
@@ -93,10 +93,10 @@ def submit(recaptcha_challenge_field,
 
         if return_code == True:
             # yep, filled perfectly
-            return RecaptchaResponse (is_valid=True)
+            return RecaptchaResponse(is_valid=True)
         else:
             # nope, something went wrong
-            return RecaptchaResponse (is_valid=False, error_code = return_values['error-codes'] if 'error-codes' in return_values.keys() else '') # error_code = return_values[1]
+            return RecaptchaResponse(is_valid=False, error_code=return_values['error-codes'] if 'error-codes' in return_values.keys() else '') # error_code = return_values[1]
     else:
         # recaptcha server was not reachable
-        return RecaptchaResponse (is_valid=False, error_code = "recaptcha-not-reachable")
+        return RecaptchaResponse(is_valid=False, error_code="recaptcha-not-reachable")

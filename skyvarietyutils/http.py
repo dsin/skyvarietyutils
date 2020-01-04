@@ -8,3 +8,11 @@ def post(url, query_args={}, headers={}):
   # print(response.read())
 
   return response
+
+def get_client_ip(http_x_forwarded_for, remote_addr):
+  x_forwarded_for = http_x_forwarded_for
+  if x_forwarded_for:
+    ip = x_forwarded_for.split(',')[0]
+  else:
+    ip = remote_addr
+  return ip

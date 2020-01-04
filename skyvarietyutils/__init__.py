@@ -3,5 +3,6 @@ def hello():
 
 from . import (
   http,
-  captcha
+  captcha,
+  string
 )
