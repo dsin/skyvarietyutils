@@ -7,6 +7,9 @@ setup(
     url='git@github.com:dsin/skyvarietyutils.git',
     author='dsin',
     author_email='dsin@skyvariety.com',
+    install_requires=[
+      'urllib',
+    ],
     license='unlicense',
     packages=['skyvarietyutils'],
     zip_safe=False
