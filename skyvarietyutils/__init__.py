@@ -3,4 +3,5 @@ def hello():
 
 from . import (
   http,
+  captcha
 )
