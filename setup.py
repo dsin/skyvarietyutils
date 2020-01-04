@@ -8,6 +8,7 @@ setup(
     author='dsin',
     author_email='dsin@skyvariety.com',
     install_requires=[
+      'ply==3.11'
     ],
     license='unlicense',
     packages=['skyvarietyutils'],

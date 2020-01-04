@@ -13,9 +13,9 @@ from email.mime.text import MIMEText
 #  }
 def send_gmail(config, subject, body, to):
   msg = MIMEMultipart('alternative')
-  msg["Subject"] = subject
-  msg["From"] = config['from']
-  msg["To"] = to
+  msg['Subject'] = subject
+  msg['From'] = config['from']
+  msg['To'] = to
   msg.add_header('reply-to', config['reply_to'])
   msg.attach(MIMEText(body, 'html'))
 
