@@ -1,2 +1,2 @@
-def my_cool_test_method():
+def hello():
     print('It works!')
