@@ -125,8 +125,6 @@ def _encode_multipart(**kw):
             data.append('Content-Disposition: form-data; name="%s"\r\n' % k)
             data.append(str(v)) # v.encode('utf-8') if isinstance(v, str) else v
     data.append('--%s--\r\n' % boundary)
-    print("XXXXXXXXXXXX")
-    print(data)
     return '\r\n'.join(data), boundary
 
 
@@ -176,7 +174,7 @@ def _http(method, url, headers=None, **kw):
     http_url = '%s?%s' % (url, params) if method == _HTTP_GET else url
     http_body = None if method == 'GET' else params
     logging.error('%s: %s' % (method, http_url))
-    req = (http_url)
+    req = urllib.request.Request(http_url)
     req.add_header('Accept-Encoding', 'gzip')
     if headers:
         for k, v in headers.iteritems():
