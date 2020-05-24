@@ -12,5 +12,6 @@ from . import (
   twitterads,
   twitter,
   weibo,
-  include.sinaweibopy.snspy,
 )
+
+import include.sinaweibopy.snspy
