@@ -18,7 +18,6 @@ import hashlib
 import base64
 
 import urllib
-import urlparse
 import gzip
 
 import logging
@@ -339,7 +338,7 @@ class QQMixin(SNSMixin):
         return JsonDict(access_token=access_token, expires=expires, **r)
 
     def _qs2dict(self, text):
-        qs = urlparse.parse_qs(text)
+        qs = urllib.parse.parse_qs(text)
         return dict(((k, v[0]) for k, v in qs.iteritems()))
 
     def get_openid(self, access_token):
