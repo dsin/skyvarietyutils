@@ -117,15 +117,15 @@ def _encode_multipart(**kw):
             # file-like object:
             filename = getattr(v, 'name', '')
             content = v.read()
-            data.append('Content-Disposition: form-data; name="%s"; filename="hidden"' % k)
-            data.append('Content-Length: %d' % len(content))
-            data.append('Content-Type: %s\r\n' % _guess_content_type(filename))
-            data.append(str(content))
+            data.append(b'Content-Disposition: form-data; name="%s"; filename="hidden"' % k)
+            data.append(b'Content-Length: %d' % len(content))
+            data.append(b'Content-Type: %s\r\n' % _guess_content_type(filename))
+            data.append(content)
         else:
-            data.append('Content-Disposition: form-data; name="%s"\r\n' % k)
-            data.append(str(v)) # v.encode('utf-8') if isinstance(v, str) else v
+            data.append(b'Content-Disposition: form-data; name="%s"\r\n' % k)
+            data.append(v) # v.encode('utf-8') if isinstance(v, str) else v
     data.append('--%s--\r\n' % boundary)
-    return '\r\n'.join(data), boundary
+    return b'\r\n'.join(data), boundary
 
 
 def _guess_content_type(url):
@@ -171,7 +171,6 @@ def _http(method, url, headers=None, **kw):
         params, boundary = _encode_multipart(**kw)
     else:
         params = _encode_params(**kw)
-        params = urllib.parse.urlencode(params).encode("utf-8")
     http_url = '%s?%s' % (url, params) if method == _HTTP_GET else url
     http_body = None if method == 'GET' else params
     logging.error('%s: %s' % (method, http_url))
