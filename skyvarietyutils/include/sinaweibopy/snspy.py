@@ -119,7 +119,7 @@ def _encode_multipart(**kw):
             content = v.read()
             data.append(b'Content-Disposition: form-data; name="%s"; filename="hidden"' % bytes(k, 'utf8'))
             data.append(b'Content-Length: %d' % len(content))
-            data.append(b'Content-Type: %s\r\n' % _guess_content_type(filename))
+            data.append(b'Content-Type: %s\r\n' % bytes(_guess_content_type(filename), 'utf8'))
             data.append(content)
         else:
             data.append(b'Content-Disposition: form-data; name="%s"\r\n' % bytes(k, 'utf8'))
