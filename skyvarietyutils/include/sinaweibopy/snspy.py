@@ -109,7 +109,7 @@ def _encode_params(**kw):
 
 def _encode_multipart(**kw):
     ' build a multipart/form-data body with randomly generated boundary '
-    boundary = b'----------%s' % hex(int(time.time() * 1000))
+    boundary = b'----------%s' % bytes(hex(int(time.time() * 1000)), 'utf8')
     data = []
     for k, v in kw.items():
         data.append(b'--%s' % boundary)
