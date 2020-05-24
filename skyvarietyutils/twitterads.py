@@ -10,14 +10,9 @@ from twitter_ads.restapi import UserIdLookup
 from twitter_ads.enum import MEDIA_CATEGORY
 
 class TwitterAds:
-  def __init__(self, access_token, access_token_secrets, twitter_ads_account_id, ADS_ACCOUNT_ID_MAPPER):
-    self.ADS_ACCOUNT_ID_MAPPER = ADS_ACCOUNT_ID_MAPPER
-    ads_account = TwitterAdsAPI.getAdsAccount(twitter_ads_account_id)
-
+  def __init__(self, consumer_key, consumer_secret, access_token, access_token_secrets, twitter_ads_account_id):
     # initialize the client
-    self.client = Client(ads_account['consumer_key'], ads_account['consumer_secret'], access_token, access_token_secrets)
-    self.twitter_ads_account_id = twitter_ads_account_id
-
+    self.client = Client(consumer_key, consumer_secret, access_token, access_token_secrets)
     #class Test:
     #  def __init__(self, ADS_ACCOUNT_ID, client):
     #    self.id = ADS_ACCOUNT_ID
@@ -25,18 +20,14 @@ class TwitterAds:
 
     ##self.account =Test(self.ADS_ACCOUNT_ID, self.client)
     # load the advertiser account instance
-    self.account = self.client.accounts(self.twitter_ads_account_id)
+    self.account = self.client.accounts(twitter_ads_account_id)
 
-  @staticmethod
-  def getAdsAccount(twitter_ads_account_id):
-    return TwitterAdsAPI.ADS_ACCOUNT_ID_MAPPER[twitter_ads_account_id]
-
-  def uploadMedia(self, mediaBinary):
+  def uploadMedia(self, account_id, mediaBinary):
     # upload an image to POST media/upload
     # https://developer.twitter.com/en/docs/ads/creatives/guides/media-library
     resource = '/1.1/media/upload.json'
     params = {
-        'additional_owners': self.ADS_ACCOUNT_ID_MAPPER[self.twitter_ads_account_id]['account_id'],
+        'additional_owners': account_id,
         'media_category': MEDIA_CATEGORY.TWEET_IMAGE
     }
     domain = 'https://upload.twitter.com'
@@ -48,10 +39,8 @@ class TwitterAds:
     return media_key
 
   # ('', datetime.utcnow() + timedelta(days=2), 'your_twitter_handle_name')
-  def scheduleTweets(self, message, scheduled_at, media_keys=[]):
+  def scheduleTweets(self, screen_name, message, scheduled_at, media_keys=[]):
     try :
-      screen_name = self.ADS_ACCOUNT_ID_MAPPER[self.twitter_ads_account_id]['screen_name']
-
       # get user_id for as_user_id parameter
       user_id = UserIdLookup.load(self.account, screen_name=screen_name).id
 
