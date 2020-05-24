@@ -55,7 +55,7 @@ class JsonDict(dict):
         self[attr] = value
 
 
-class APIError(StandardError):
+class APIError(Exception):
     '''
     raise APIError if receiving json message indicating failure.
     '''
@@ -63,7 +63,7 @@ class APIError(StandardError):
         self.error_code = error_code
         self.error = error
         self.request = request
-        StandardError.__init__(self, error)
+        Exception.__init__(self, error)
 
     def __str__(self):
         return 'APIError: %s: %s, request: %s' % (self.error_code, self.error, self.request)
@@ -198,7 +198,7 @@ class SNSMixin(object):
         self._redirect_uri = redirect_uri
 
     def _prepare_api(self, method, path, access_token, **kw):
-        raise StandardError('Subclass must implement \'_prepare_api\' method.')
+        raise Exception('Subclass must implement \'_prepare_api\' method.')
 
     def on_http_error(self, e):
         try:
