@@ -1,8 +1,8 @@
-import urllib.parse, urllib.request, urllib.urlencode
+import urllib.parse, urllib.request
 
 def get(url, args, headers={}):
   if args and len(args) != 0:
-    url = url+'?%s' % urllib.urlencode(args)
+    url = url + '?%s' % urllib.parse.urlencode(args)
 
   # If you do not pass the data argument, urllib uses a GET request.
   req = urllib.request.Request(url, None, headers)
