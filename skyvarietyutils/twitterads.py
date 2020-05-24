@@ -54,7 +54,12 @@ class TwitterAds:
       scheduled_tweet.save()
 
       return {'status': 'success'}
+
     except Exception as e:
       print(e)
 
-      return {'status': 'error', 'error_code': e.details[0]['code'], 'error': e.details[0]['message']}
+      return {
+        'status': 'error',
+        'error_code': e.code, # e.details[0]['code']
+        'error': e.details[0]['message'] if e.details
+      }
