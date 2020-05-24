@@ -111,7 +111,7 @@ def _encode_multipart(**kw):
     ' build a multipart/form-data body with randomly generated boundary '
     boundary = '----------%s' % hex(int(time.time() * 1000))
     data = []
-    for k, v in kw.iteritems():
+    for k, v in kw.items():
         data.append('--%s' % boundary)
         if hasattr(v, 'read'):
             # file-like object:
