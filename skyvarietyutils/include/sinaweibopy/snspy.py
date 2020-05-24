@@ -171,9 +171,9 @@ def _http(method, url, headers=None, **kw):
         params, boundary = _encode_multipart(**kw)
     else:
         params = _encode_params(**kw)
+        params = urllib.parse.urlencode(params).encode("utf-8")
     http_url = '%s?%s' % (url, params) if method == _HTTP_GET else url
     http_body = None if method == 'GET' else params
-    http_body = urllib.parse.urlencode(http_body).encode("utf-8")
     logging.error('%s: %s' % (method, http_url))
     req = urllib.request.Request(http_url, data=http_body)
     req.add_header('Accept-Encoding', 'gzip')
