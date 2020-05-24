@@ -8,10 +8,7 @@ __author__ = 'Liao Xuefeng (askxuefeng@gmail.com)'
 Python client SDK for SNS API using OAuth 2. Require Python 2.6/2.7.
 '''
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
+from io import StringIO
 
 import time
 import json
