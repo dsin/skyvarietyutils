@@ -21,7 +21,6 @@ import hashlib
 import base64
 
 import urllib
-import urllib2
 import urlparse
 import gzip
 
@@ -179,7 +178,7 @@ def _http(method, url, headers=None, **kw):
     http_url = '%s?%s' % (url, params) if method == _HTTP_GET else url
     http_body = None if method == 'GET' else params
     logging.error('%s: %s' % (method, http_url))
-    req = urllib2.Request(http_url, data=http_body)
+    req = (http_url, data=http_body)
     req.add_header('Accept-Encoding', 'gzip')
     if headers:
         for k, v in headers.iteritems():
@@ -189,7 +188,7 @@ def _http(method, url, headers=None, **kw):
     try:
         logging.info(boundary)
         logging.info(http_body)
-        resp = urllib2.urlopen(req, timeout=45)
+        resp = urllib.request.urlopen(req, timeout=45)
         return _read_http_body(resp)
     finally:
         pass
@@ -401,7 +400,7 @@ class APIClient(object):
         logging.debug('Call API: %s: %s' % (method, the_url))
         try:
             resp = _http(method, the_url, headers, **params)
-        except urllib2.HTTPError, e:
+        except urllib.error.HTTPError as e:
             return self._mixin.on_http_error(e)
         r = _parse_json(resp)
         if hasattr(r, 'error_code'):
