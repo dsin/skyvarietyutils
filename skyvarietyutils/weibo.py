@@ -10,7 +10,7 @@ from include.sinaweibopy.snspy import APIError
 # App Lists : https://open.weibo.com/webmaster
 
 class Weibo:
-  def __init__(self, access_token=None, app_key, app_secret, callback_url):
+  def __init__(self, app_key, app_secret, callback_url, access_token=None):
     self.APP_KEY = app_key
     self.APP_SECRET = app_secret
     self.CALLBACK_URL = callback_url
