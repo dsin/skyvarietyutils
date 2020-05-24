@@ -117,7 +117,7 @@ def _encode_multipart(**kw):
             # file-like object:
             filename = getattr(v, 'name', '')
             content = v.read()
-            data.append(b'Content-Disposition: form-data; name="%s"; filename="hidden"' % k)
+            data.append(b'Content-Disposition: form-data; name="%s"; filename="hidden"' % bytes(k, 'utf8'))
             data.append(b'Content-Length: %d' % len(content))
             data.append(b'Content-Type: %s\r\n' % _guess_content_type(filename))
             data.append(content)
