@@ -123,9 +123,9 @@ def _encode_multipart(**kw):
             data.append(content)
         else:
             data.append('Content-Disposition: form-data; name="%s"\r\n' % k)
-            data.append(v.encode('utf-8') if isinstance(v, str) else str(v,encoding='utf8'))
+            data.append(v.encode('utf-8') if isinstance(v, str) else v)
     data.append('--%s--\r\n' % boundary)
-    return '\r\n'.join(data), boundary
+    return b'\r\n'.join(data), boundary
 
 
 def _guess_content_type(url):
