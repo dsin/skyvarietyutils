@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from include.sinaweibopy.snspy import APIClient
-from include.sinaweibopy.snspy import SinaWeiboMixin      # suppose you are using Twitter
-from include.sinaweibopy.snspy import APIError
+from .include.sinaweibopy.snspy import APIClient
+from .include.sinaweibopy.snspy import SinaWeiboMixin      # suppose you are using Twitter
+from .include.sinaweibopy.snspy import APIError
 
 # https://gwu-libraries.github.io/sfm-ui/posts/2016-04-26-weibo-api-guide
 # https://github.com/michaelliao/sinaweibopy

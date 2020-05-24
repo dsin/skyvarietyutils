@@ -13,5 +13,3 @@ from . import (
   twitter,
   weibo,
 )
-
-import include.sinaweibopy.snspy
