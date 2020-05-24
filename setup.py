@@ -8,7 +8,10 @@ setup(
     author='dsin',
     author_email='dsin@skyvariety.com',
     install_requires=[
-      'ply==3.11'
+      'ply==3.11',
+      'tweepy===3.8.0',
+      'twitter-ads==6.1.0',
+      # '-e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy',
     ],
     license='unlicense',
     packages=['skyvarietyutils'],
