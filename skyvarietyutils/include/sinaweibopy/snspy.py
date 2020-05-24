@@ -79,7 +79,7 @@ def _parse_json(s):
     >>> r['score']
     95
     '''
-    return json.loads(s, object_hook=lambda pairs: JsonDict(pairs.iteritems()))
+    return json.loads(s, object_hook=lambda pairs: JsonDict(pairs.items()))
 
 
 def _encode_params(**kw):
@@ -102,7 +102,7 @@ def _encode_params(**kw):
         else:
             L.append('%s=%s' % (k, urllib.quote(str(v))))
     args = []
-    for k, v in kw.iteritems():
+    for k, v in kw.items():
         _encode(args, k, v)
     return '&'.join(args)
 
@@ -177,7 +177,7 @@ def _http(method, url, headers=None, **kw):
     req = urllib.request.Request(http_url)
     req.add_header('Accept-Encoding', 'gzip')
     if headers:
-        for k, v in headers.iteritems():
+        for k, v in headers.items():
             req.add_header(k, v)
     if boundary:
         req.add_header('Content-Type', 'multipart/form-data; boundary=%s' % boundary)
@@ -339,7 +339,7 @@ class QQMixin(SNSMixin):
 
     def _qs2dict(self, text):
         qs = urllib.parse.parse_qs(text)
-        return dict(((k, v[0]) for k, v in qs.iteritems()))
+        return dict(((k, v[0]) for k, v in qs.items()))
 
     def get_openid(self, access_token):
         resp_text = _http('GET', 'https://graph.z.qq.com/moc2/me', access_token=access_token)
