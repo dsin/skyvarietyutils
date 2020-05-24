@@ -9,7 +9,7 @@ from twitter_ads.creative import ScheduledTweet
 from twitter_ads.restapi import UserIdLookup
 from twitter_ads.enum import MEDIA_CATEGORY
 
-class TwitterAdsAPI:
+class TwitterAds:
   def __init__(self, access_token, access_token_secrets, twitter_ads_account_id, ADS_ACCOUNT_ID_MAPPER):
     self.ADS_ACCOUNT_ID_MAPPER = ADS_ACCOUNT_ID_MAPPER
     ads_account = TwitterAdsAPI.getAdsAccount(twitter_ads_account_id)
