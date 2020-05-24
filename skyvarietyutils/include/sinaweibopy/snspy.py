@@ -123,7 +123,7 @@ def _encode_multipart(**kw):
             data.append(str(content))
         else:
             data.append('Content-Disposition: form-data; name="%s"\r\n' % k)
-            data.append(v.encode('utf-8') if isinstance(v, str) else v)
+            data.append(str(v)) # v.encode('utf-8') if isinstance(v, str) else v
     data.append('--%s--\r\n' % boundary)
     print("XXXXXXXXXXXX")
     print(data)
