@@ -112,7 +112,7 @@ def _encode_multipart(**kw):
     boundary = '----------%s' % hex(int(time.time() * 1000))
     data = []
     for k, v in kw.items():
-        data.append('--%s' % boundary)
+        data.append(b'--%s' % boundary)
         if hasattr(v, 'read'):
             # file-like object:
             filename = getattr(v, 'name', '')
