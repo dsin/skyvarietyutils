@@ -61,5 +61,5 @@ class TwitterAds:
       return {
         'status': 'error',
         'error_code': e.code, # e.details[0]['code']
-        'error': e.details[0]['message'] if e.details
+        'error': e.details[0]['message'] if e.details,
       }
