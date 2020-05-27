@@ -11,5 +11,5 @@ from . import (
   string,
   twitterads,
   twitter,
-  # weibo,
+  weibo,
 )
