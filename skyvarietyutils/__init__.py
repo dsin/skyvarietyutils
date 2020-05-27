@@ -3,13 +3,13 @@ def hello():
 
 from . import (
   calculator,
-#  captcha,
-#  http,
-#  mail,
-#  performance,
-#  siamsee,
-#  string,
-#  twitterads,
-#  twitter,
-#  weibo,
+  captcha,
+  http,
+  mail,
+  performance,
+  siamsee,
+  string,
+  twitterads,
+  twitter,
+  weibo,
 )
