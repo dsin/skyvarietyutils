@@ -12,4 +12,5 @@ from . import (
   twitterads,
   twitter,
   weibo,
+  include,
 )
