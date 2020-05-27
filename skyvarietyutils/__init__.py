@@ -2,6 +2,7 @@ def hello():
   print('It works!')
 
 from . import (
+  include,
   calculator,
   captcha,
   http,
@@ -12,5 +13,4 @@ from . import (
   twitterads,
   twitter,
   weibo,
-  include,
 )
