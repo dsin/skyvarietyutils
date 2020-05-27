@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+print 'test'
 from skyvarietyutils.include.sinaweibopy.snspy import APIClient
 from skyvarietyutils.include.sinaweibopy.snspy import SinaWeiboMixin      # suppose you are using Twitter
 from skyvarietyutils.include.sinaweibopy.snspy import APIError
