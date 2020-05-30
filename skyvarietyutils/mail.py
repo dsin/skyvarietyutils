@@ -20,7 +20,8 @@ def send_gmail(config, subject, body, to, cc=None, bcc=None):
     msg['Cc'] = cc
   if bcc:
     msg['Bcc'] = bcc
-  msg.add_header('reply-to', config['reply_to'])
+  if 'reply_to' in config:
+    msg.add_header('reply-to', config['reply_to'])
   msg.attach(MIMEText(body, 'html'))
 
   server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
