@@ -18,7 +18,7 @@ def send_gmail(config, subject, body, to, cc=None, bcc=None):
   msg['To'] = to
   if cc:
     msg['Cc'] = cc
-  if bcc
+  if bcc:
     msg['Bcc'] = bcc
   msg.add_header('reply-to', config['reply_to'])
   msg.attach(MIMEText(body, 'html'))
