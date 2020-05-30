@@ -11,11 +11,15 @@ from email.mime.text import MIMEText
 #    'password': 'xx',
 #    'reply_to': 'xx@xx.xx.xx'
 #  }
-def send_gmail(config, subject, body, to):
+def send_gmail(config, subject, body, to, cc=None, bcc=None):
   msg = MIMEMultipart('alternative')
   msg['Subject'] = subject
   msg['From'] = config['from']
   msg['To'] = to
+  if cc:
+    msg['Cc'] = cc
+  if bcc
+    msg['Bcc'] = bcc
   msg.add_header('reply-to', config['reply_to'])
   msg.attach(MIMEText(body, 'html'))
 
