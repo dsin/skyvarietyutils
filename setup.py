@@ -13,7 +13,7 @@ setuptools.setup(
       'twitter-ads==6.1.0',
       # '-e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy',
     ],
-    license='unlicense',
+    license='proprietary',
     packages=setuptools.find_packages(),
     package_dir={'skyvarietyutils': 'src'},
     zip_safe=False
