@@ -14,6 +14,6 @@ setup(
       # '-e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy',
     ],
     license='unlicense',
-    packages=['skyvarietyutils'],
+    packages=['skyvarietyutils', 'skyvarietyutils.include'],
     zip_safe=False
 )
