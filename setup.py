@@ -1,6 +1,6 @@
-from setuptools import setup
+import setuptools
 
-setup(
+setuptools.setup(
     name='skyvarietyutils',
     version='0.0.1',
     description='My private package from private github repo',
@@ -14,7 +14,7 @@ setup(
       # '-e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy',
     ],
     license='unlicense',
-    packages=['skyvarietyutils'],
+    packages=setuptools.find_packages(),
     package_dir={'skyvarietyutils': 'src'},
     zip_safe=False
 )
