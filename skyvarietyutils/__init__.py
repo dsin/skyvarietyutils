@@ -2,6 +2,7 @@ def hello():
   print('It works!')
 
 from . import (
+  include,
   calculator,
   captcha,
   http,
