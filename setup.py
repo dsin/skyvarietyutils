@@ -15,6 +15,6 @@ setup(
     ],
     license='unlicense',
     packages=['skyvarietyutils'],
-    package_dir={'skyvarietyutils': 'src'}
+    package_dir={'skyvarietyutils': 'src'},
     zip_safe=False
 )
