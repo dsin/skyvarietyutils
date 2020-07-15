@@ -15,6 +15,6 @@ setuptools.setup(
     ],
     license='proprietary',
     packages=setuptools.find_packages(),
-    package_dir={'skyvarietyutils': 'src'},
+    package_dir={'skyvarietyutils': 'skyvarietyutils'},
     zip_safe=False
 )
