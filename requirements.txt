@@ -1,3 +1,4 @@
+## NOTE : put it on setup.py too
 ply==3.11
 tweepy===3.8.0
 twitter-ads==6.1.0
