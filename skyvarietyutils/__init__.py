@@ -4,6 +4,7 @@ def hello():
 from . import (
   calculator,
   captcha,
+  date,
   FacebookSDK,
   http,
   mail,
