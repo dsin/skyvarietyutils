@@ -1,5 +1,16 @@
 import facebook, json
 
+# get user access token
+# from https://developers.facebook.com/tools/explorer/
+
+# debug access token + click extend user access token
+# https://developers.facebook.com/tools/debug/accesstoken
+
+# get page access token
+# curl -i -X GET "https://graph.facebook.com/{page-id}?fields=access_token&access_token={user-access-token}"
+
+# ref : https://medium.com/@yasithlokuge/how-to-generate-a-never-expiring-facebook-page-access-token-24ac5c1a95f1
+
 class FacebookSDK:
   def __init__(self, page_access_token):
     self.graph = facebook.GraphAPI(page_access_token)
