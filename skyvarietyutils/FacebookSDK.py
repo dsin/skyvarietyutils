@@ -37,15 +37,7 @@ class FacebookSDK:
       }
 
       if len(image_urls) > 1:
-          media_ids = []
-          for image in image_urls:
-            uploadResult = self.upload(page_id,
-              url=image,
-              caption=message,
-              published=False,
-            )
-            media_ids.append({'media_fbid': uploadResult['id']})
-
+          media_ids = self.bulk_upload(page_id, image_urls, message)
           if len(media_ids) > 0:
             postKwargs['attached_media'] = json.dumps(media_ids)
           else :
@@ -76,3 +68,14 @@ class FacebookSDK:
       *args,
       **kwargs
     )
+
+  def bulk_upload(self, page_id, image_urls, caption):
+    media_ids = []
+    for image in image_urls:
+      uploadResult = self.upload(page_id,
+        url=image,
+        caption=caption,
+        published=False,
+      )
+      media_ids.append({'media_fbid': uploadResult['id']})
+    return media_ids
