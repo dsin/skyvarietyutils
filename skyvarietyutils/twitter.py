@@ -2,7 +2,7 @@
 import tweepy
 
 class Twitter():
-  def __init__(self, consumer_key, consumer_secret, callback_url, oauth_token=None):
+  def __init__(self, consumer_key, consumer_secret, callback_url='', oauth_token=None):
     self.CONSUMER_KEY = consumer_key
     self.CONSUMER_SECRET = consumer_secret
     self.CALLBACK_URL = callback_url
@@ -24,7 +24,11 @@ class Twitter():
     auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET)
     auth.set_access_token(access_token, access_token_secret)
 
-    self.api = tweepy.API(auth)
+    self.api = tweepy.API(
+      auth,
+      wait_on_rate_limit=True,
+      wait_on_rate_limit_notify=True,
+    )
 
   def callback_url_verification(self, token, token_secret, oauth_verifier):
     auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
@@ -77,6 +81,9 @@ class Twitter():
       self.api.update_status(status, in_reply_to_tweet_id)
     except tweepy.error.TweepError:
       return 'Quote : %s, TweepError : %s' % (status, sys.exc_info()[0])
+
+  def update_status(self, *args, **kwargs):
+    return self.api.update_status(*args, **kwargs)
 
   def get_direct_messages(self, since_id, count=100):
     return self.api.direct_messages(since_id, None, count, None)
