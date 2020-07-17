@@ -1,6 +1,7 @@
 ## NOTE : put it on setup.py too
 ply==3.11
 tweepy===3.8.0
+twitter
 twitter-ads==6.1.0
 facebook-sdk
 # -e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy
