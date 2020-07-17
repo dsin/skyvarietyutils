@@ -1,5 +1,7 @@
 from twitter import Twitter, OAuth
 
+import skyvarietyutils
+
 class TwitterSDK:
   def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
     self.consumer_key = consumer_key
