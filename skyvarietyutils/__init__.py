@@ -13,7 +13,7 @@ from . import (
   siamsee,
   string,
   twitter,
-  twitterSDK,
+  TwitterSDK,
   twitterads,
   twitter_utils,
   weibo,
