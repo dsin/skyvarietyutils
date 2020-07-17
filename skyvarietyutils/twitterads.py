@@ -9,6 +9,8 @@ from twitter_ads.creative import ScheduledTweet
 from twitter_ads.restapi import UserIdLookup
 from twitter_ads.enum import MEDIA_CATEGORY
 
+import skyvarietyutils
+
 class TwitterAds:
   def __init__(self, consumer_key, consumer_secret, access_token, access_token_secrets, twitter_ads_account_id):
     # initialize the client
@@ -21,6 +23,13 @@ class TwitterAds:
     ##self.account =Test(self.ADS_ACCOUNT_ID, self.client)
     # load the advertiser account instance
     self.account = self.client.accounts(twitter_ads_account_id)
+
+  def uploadMedias(self, account_id, image_urls):
+    media_keys = []
+    for image_url in image_urls:
+      picBinary = skyvarietyutils.http.load_image_binary(image_url)
+      media_keys.append(self.uploadMedia(account_id, picBinary))
+    return media_keys
 
   def uploadMedia(self, account_id, mediaBinary):
     # upload an image to POST media/upload
