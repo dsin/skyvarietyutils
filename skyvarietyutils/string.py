@@ -12,3 +12,13 @@ def dashstyle_to_camelcase(name):
   # We capitalize the first letter of each component except the first one
   # with the 'title' method and join them together.
   return components[0] + "".join(x.title() for x in components[1:])
+
+def getCSV(rows):
+  import io
+  import csv
+
+  output = io.StringIO()
+  writer = csv.writer(output)
+  for row in rows:
+    writer.writerow(row)
+  return output.getvalue()
