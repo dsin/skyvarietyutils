@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import tweepy
+#import tweepy
 
 class Twitter():
   def __init__(self, consumer_key, consumer_secret, callback_url='', oauth_token=None):
@@ -10,25 +10,28 @@ class Twitter():
     self.oauth_token = oauth_token
 
   def app_login(self):
-    auth = tweepy.AppAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET)
+    #auth = tweepy.AppAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET)
 
-    self.api = tweepy.API(auth)
+    #self.api = tweepy.API(auth)
+    self.api = None
 
   def login(self):
-    auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
+    # auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
+    auth = None
     redirect_url = auth.get_authorization_url()
 
     return (auth.request_token['oauth_token'], auth.request_token['oauth_token_secret'], redirect_url)
 
   def login_with_token(self, access_token, access_token_secret):
-    auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET)
-    auth.set_access_token(access_token, access_token_secret)
+    # auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET)
+    # auth.set_access_token(access_token, access_token_secret)
 
-    self.api = tweepy.API(
-      auth,
-      wait_on_rate_limit=True,
-      wait_on_rate_limit_notify=True,
-    )
+    # self.api = tweepy.API(
+    #   auth,
+    #   wait_on_rate_limit=True,
+    #   wait_on_rate_limit_notify=True,
+    # )
+    self.api = None
 
   def callback_url_verification(self, token, token_secret, oauth_verifier):
     auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
