@@ -16,5 +16,6 @@ from . import (
   TwitterSDK,
   twitterads,
   twitter_utils,
+  VkSDK,
   weibo,
 )
