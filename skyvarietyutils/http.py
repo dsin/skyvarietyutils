@@ -1,4 +1,4 @@
-import urllib.parse, urllib.request
+import urllib.parse, urllib.request, requests
 
 def get(url, args, headers={}):
   if args and len(args) != 0:
@@ -18,6 +18,10 @@ def post(url, query_args={}, headers={}):
   # print(response.read())
 
   return response
+
+def post_file(url, content, parameter_name, file_name, headers={}):
+  files = {parameter_name: (file_name, content)}
+  return requests.post(url, data={}, files=files, headers=headers)
 
 def get_client_ip(http_x_forwarded_for, remote_addr):
   x_forwarded_for = http_x_forwarded_for
