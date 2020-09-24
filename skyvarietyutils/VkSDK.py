@@ -50,7 +50,7 @@ class VkSDK:
     return self.vk_get('photos.getWallUploadServer', args)
 
   def post_file(self, url, content):
-    return post_file(url, content, 'photo', 'whatever.png')
+    return skyvarietyutils.http.post_file(url, content, 'photo', 'whatever.png')
 
   def save_wall_photo(self, upload_response, caption=''):
     args = {
