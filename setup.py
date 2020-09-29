@@ -15,6 +15,7 @@ setuptools.setup(
       'twitter',
       # '-e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy',
       'facebook-sdk',
+      'algoliasearch>=2.0,<3.0'
     ],
     license='proprietary',
     packages=setuptools.find_packages(),
