@@ -3,6 +3,7 @@ def hello():
 
 from . import (
   algolia,
+  BaseFirestoreModel,
   calculator,
   captcha,
   date,

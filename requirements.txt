@@ -6,3 +6,4 @@ twitter-ads==6.1.0
 facebook-sdk
 # -e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy
 algoliasearch>=2.0,<3.0
+firebase-admin
