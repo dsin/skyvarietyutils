@@ -75,24 +75,15 @@ class BaseFirestoreModel():
     if returnType == 'stream':
       return docs
 
-    results = None
-    if returnType == 'dictOfObject':
-       results = {}
-       for doc in docs:
+    results = []
+    for doc in docs:
+       if returnType == 'dict':
          resultDict = doc.to_dict()
          resultDict['id'] = doc.id
-         results[doc.id] = resultDict
-    else :
-      results = []
-      for doc in docs:
-         if returnType == 'dict':
-           resultDict = doc.to_dict()
-           resultDict['id'] = doc.id
-           results.append(resultDict)
-         else:
-           results.append(self.from_doc(doc))
-      #  results[doc.id] = doc.to_dict()
-
+         results.append(resultDict)
+       else:
+         results.append(self.from_doc(doc))
+    #  results[doc.id] = doc.to_dict()
     return results
 
   @classmethod
