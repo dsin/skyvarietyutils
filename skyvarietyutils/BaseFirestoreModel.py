@@ -76,12 +76,15 @@ class BaseFirestoreModel():
       return docs
 
     results = None
-    if returnType == 'dictOfObject':
-       results = {}
-       for doc in docs:
-         resultDict = doc.to_dict()
-         resultDict['id'] = doc.id
-         results[doc.id] = resultDict
+    if returnType == 'dictOfObject' or returnType == 'dictOfModel':
+      results = {}
+      for doc in docs:
+        if returnType == 'dictOfObject':
+          resultDict = doc.to_dict()
+          resultDict['id'] = doc.id
+          results[doc.id] = resultDict
+        elif returnType == 'dictOfModel':
+          results[doc.id] = self.from_doc(doc)
     else :
       results = []
       for doc in docs:
