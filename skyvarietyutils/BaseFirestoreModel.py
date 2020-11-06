@@ -4,7 +4,7 @@ import os, datetime
 # https://firebase.google.com/docs/firestore/query-data/get-data
 # https://cloud.google.com/community/tutorials/building-flask-api-with-cloud-firestore-and-deploying-to-cloud-run
 class BaseFirestoreModel():
-  cred = credentials.Certificate(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+  cred = credentials.Certificate(os.environ['GOOGLE_APPLICATION_CREDENTIALS']) if 'GOOGLE_APPLICATION_CREDENTIALS' in os.environ else None
   default_app = initialize_app(cred)
   db = firestore.client()
 

@@ -1,6 +1,7 @@
 import requests, json
 import urllib.parse
 
+# https://notify-bot.line.me/my/
 def notify(token, message):
   url = 'https://notify-api.line.me/api/notify'
 
