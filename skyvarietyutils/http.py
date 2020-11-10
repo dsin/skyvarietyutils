@@ -10,8 +10,12 @@ def get(url, args, headers={}):
 
   return response
 
-def post(url, query_args={}, headers={}):
-  data = urllib.parse.urlencode(query_args).encode('utf-8')
+def post(url, query_args={}, headers={}, type='form'):
+  if type == 'json':
+    data = json.dumps(query_args).encode('utf-8')
+    headers['Content-Type'] = 'application/json',
+  else:
+    data = urllib.parse.urlencode(query_args).encode('utf-8')
 
   req = urllib.request.Request(url, data, headers)
   response = urllib.request.urlopen(req)
