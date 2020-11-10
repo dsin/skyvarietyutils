@@ -13,7 +13,7 @@ def get(url, args, headers={}):
 def post(url, query_args={}, headers={}, type='form'):
   if type == 'json':
     data = json.dumps(query_args).encode('utf-8')
-    headers['Content-Type'] = 'application/json',
+    headers['Content-Type'] = 'application/json'
   else:
     data = urllib.parse.urlencode(query_args).encode('utf-8')
 
