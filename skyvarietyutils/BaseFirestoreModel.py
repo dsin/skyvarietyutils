@@ -56,6 +56,22 @@ class BaseFirestoreModel():
       return None
 
   @classmethod
+  def get_by_condition(self, conditions):
+    collection = self.getCollection()
+    for condition in conditions:
+      collection = collection.where(condition)
+
+    elements = self.fetch(
+      collection=collection,
+      limit=1
+    )
+    if elements:
+      element = elements[0]
+      return element
+    else:
+      return None
+
+  @classmethod
   def fetch(self, limit=None, startAfter=None, endBefore=None, collection=None, orderBy=None, direction=firestore.Query.DESCENDING, returnType="object"):
     if collection == None:
       collection = self.getCollection()
