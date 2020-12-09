@@ -59,7 +59,7 @@ class BaseFirestoreModel():
   def get_by_condition(self, conditions):
     collection = self.getCollection()
     for condition in conditions:
-      collection = collection.where(condition)
+      collection = collection.where(*condition)
 
     elements = self.fetch(
       collection=collection,
