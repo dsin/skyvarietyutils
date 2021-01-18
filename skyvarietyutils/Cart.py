@@ -17,6 +17,7 @@ class Cart:
       cart[index][key] = value
 
     self.set(cart)
+    return cart
 
   def delete(self, index):
     cart = self.get()
@@ -24,6 +25,7 @@ class Cart:
     del cart[index]
 
     self.set(cart)
+    return cart
 
   def clear(self):
     pass
