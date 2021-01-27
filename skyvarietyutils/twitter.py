@@ -16,8 +16,8 @@ class Twitter():
     self.api = None
 
   def login(self):
-    # auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
-    auth = None
+    auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
+    # auth = None
     redirect_url = auth.get_authorization_url()
 
     return (auth.request_token['oauth_token'], auth.request_token['oauth_token_secret'], redirect_url)
