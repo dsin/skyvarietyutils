@@ -10,7 +10,7 @@ setuptools.setup(
     install_requires=[
       'ply==3.11',
       'six',
-      #'tweepy===3.8.0',
+      'tweepy',
       'twitter-ads==6.1.0',
       'twitter',
       # '-e git+ssh://git@github.com/michaelliao/sinaweibopy.git#egg=sinaweibopy',

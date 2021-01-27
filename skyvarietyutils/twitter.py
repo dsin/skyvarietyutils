@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#import tweepy
+import tweepy
 
 class Twitter():
   def __init__(self, consumer_key, consumer_secret, callback_url='', oauth_token=None):
