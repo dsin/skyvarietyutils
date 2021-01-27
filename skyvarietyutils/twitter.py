@@ -17,21 +17,19 @@ class Twitter():
 
   def login(self):
     auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
-    # auth = None
     redirect_url = auth.get_authorization_url()
 
     return (auth.request_token['oauth_token'], auth.request_token['oauth_token_secret'], redirect_url)
 
   def login_with_token(self, access_token, access_token_secret):
-    # auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET)
-    # auth.set_access_token(access_token, access_token_secret)
+    auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET)
+    auth.set_access_token(access_token, access_token_secret)
 
-    # self.api = tweepy.API(
-    #   auth,
-    #   wait_on_rate_limit=True,
-    #   wait_on_rate_limit_notify=True,
-    # )
-    self.api = None
+    self.api = tweepy.API(
+       auth,
+       wait_on_rate_limit=True,
+       wait_on_rate_limit_notify=True,
+    )
 
   def callback_url_verification(self, token, token_secret, oauth_verifier):
     auth = tweepy.OAuthHandler(self.CONSUMER_KEY, self.CONSUMER_SECRET, self.CALLBACK_URL)
