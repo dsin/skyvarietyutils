@@ -8,4 +8,6 @@ def daysSinceEpoch():
 
 def tomorrowAt(hour):
   now = datetime.datetime.now()
-  return datetime.datetime(now.year, now.month, now.day+1, hour-7, random.randint(0,59), random.randint(0,59), tzinfo=datetime.timezone.utc)
+  tomorrow = now + datetime.timedelta(days=1)
+  return tomorrow.replace(hour=hour-7, minute=random.randint(0,59), second=random.randint(0,59))
+  # return datetime.datetime(now.year, now.month, now.day+1, hour-7, random.randint(0,59), random.randint(0,59), tzinfo=datetime.timezone.utc)
